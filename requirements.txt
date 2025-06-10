@@ -1,7 +1,8 @@
-streamlit==1.32.0
-langchain==0.1.12
-langchain-google-genai==0.0.11
-google-generativeai==0.3.2
-langgraph==0.0.19
-duckduckgo-search==4.4.3
-pytz==2024.1 
+streamlit>=1.32.0
+langchain>=0.1.12
+langchain-google-genai>=0.0.11
+google-generativeai>=0.3.2
+langgraph>=0.0.19
+duckduckgo-search>=4.4.3
+pytz>=2024.1
+Pillow>=10.2.0  # For image processing 

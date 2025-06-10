@@ -14,13 +14,13 @@ A conversational AI assistant powered by Google's Gemini model, capable of perfo
 
 ## Available Models
 
-- **gemini-2.5-pro-preview-06-05**: Latest preview version with advanced reasoning and multimodal capabilities
-- **gemini-2.5-flash-preview-05-20**: Preview model optimized for speed and cost efficiency
-- **gemini-1.5-pro**: Stable version for complex tasks requiring high intelligence
-- **gemini-1.5-flash**: Stable model for fast and versatile performance
-- **gemini-2.0-flash**: Next-gen model focused on speed and real-time streaming
-- **gemini-2.0-flash-lite**: Cost-effective model for high-throughput applications
-- **text-embedding-004**: Specialized model for text embeddings and classification
+- gemini-2.5-pro-preview-06-05: Latest preview version with advanced reasoning and multimodal capabilities
+- gemini-2.5-flash-preview-05-20: Preview model optimized for speed and cost efficiency
+- gemini-1.5-pro: Stable version for complex tasks requiring high intelligence
+- gemini-1.5-flash: Stable model for fast and versatile performance
+- gemini-2.0-flash: Next-gen model focused on speed and real-time streaming
+- gemini-2.0-flash-lite: Cost-effective model for high-throughput applications
+- text-embedding-004: Specialized model for text embeddings and classification
 
 ## Prerequisites
 
@@ -36,28 +36,70 @@ git clone https://github.com/yourusername/agent-smith.git
 cd agent-smith
 ```
 
-2. Install the required dependencies:
+2. Create and activate a virtual environment:
+
+For macOS/Linux:
+```bash
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+```
+
+For Windows:
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+.\venv\Scripts\activate
+```
+
+3. Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Set up your environment variables:
+4. Set up your environment variables:
+
+For macOS/Linux:
 ```bash
 export GOOGLE_API_KEY="your_google_api_key"
 ```
 
+For Windows (Command Prompt):
+```bash
+set GOOGLE_API_KEY=your_google_api_key
+```
+
+For Windows (PowerShell):
+```bash
+$env:GOOGLE_API_KEY="your_google_api_key"
+```
+
 ## Usage
 
-1. Run the application:
+1. Ensure your virtual environment is activated (you should see `(venv)` in your terminal prompt)
+
+2. Run the application:
 ```bash
 streamlit run app.py
 ```
 
-2. Open your browser and navigate to the provided local URL (typically http://localhost:8501)
+3. Open your browser and navigate to the provided local URL (typically http://localhost:8501)
 
-3. Start chatting with Agent Smith! You can:
+4. Start chatting with Agent Smith! You can:
    - Ask general questions
    - Have contextual conversations
+
+## Deactivating the Virtual Environment
+
+When you're done using the application, you can deactivate the virtual environment:
+
+```bash
+deactivate
+```
 
 ## Project Structure
 
@@ -66,6 +108,7 @@ agent-smith/
 ├── app.py              # Main application file
 ├── requirements.txt    # Project dependencies
 ├── agent_smith.jpg     # Agent Smith avatar
+├── venv/              # Virtual environment directory (created during setup)
 └── logs/              # Application logs directory
 ```
 
