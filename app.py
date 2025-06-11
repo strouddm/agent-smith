@@ -21,7 +21,7 @@ from langgraph.graph import StateGraph, START, END
 
 # Tools and External Agents
 from duckduckgo_search import DDGS
-from sed_agent import run_sed_agent
+# from sed_agent import run_sed_agent
 
 def setup_logging():
     """Configure logging with a single log file per session."""
@@ -59,7 +59,7 @@ logger = logging.getLogger(__name__)
 # Constants
 PAGE_ICON = "🤖"
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "AIzaSyCQJAurEYDJJQrXfYRnYWswteGFauYWI28")
-SED_API_KEY = os.getenv("SED_API_KEY", "PUT API KEY HERE")
+# SED_API_KEY = os.getenv("SED_API_KEY", "PUT API KEY HERE")
 
 
 # Configure Gemini
@@ -115,7 +115,7 @@ class SearchTool:
         self.ddgs = DDGS()
         self.last_search_time = 0
         self.min_search_interval = 2  # Minimum seconds between searches
-        self.llm = genai.GenerativeModel('gemini-2.5-flash-preview-05-20')
+        self.llm = genai.GenerativeModel('gemini-2.0-flash')
         
     def _transform_query(self, query: str) -> str:
         """Transform a question into a search-friendly query using LLM."""
@@ -208,7 +208,7 @@ class Agent:
         genai.configure(api_key=GOOGLE_API_KEY)
         
         # Initialize the model
-        self.llm = genai.GenerativeModel('gemini-2.5-pro-preview-06-05')
+        self.llm = genai.GenerativeModel('gemini-2.0-flash')
         self.search_tool = SearchTool()
         self._initialize_graph()
         
@@ -416,10 +416,10 @@ class ChatInterface:
         """Display all messages in the given container."""
         for message in st.session_state.messages:
             if message["role"] == "user":
-                st.chat_message("user").write(message["content"])
+                st.chat_message("user", avatar="images/neo.jpg").write(message["content"])
             else:
                 # Use Agent Smith image as the assistant's avatar
-                st.chat_message("assistant", avatar="agent_smith.jpg").write(message["content"])
+                st.chat_message("assistant", avatar="images/agent_smith.jpg").write(message["content"])
 
     def _process_user_input(self, prompt: str):
         """Process user input and update the chat state."""
@@ -442,7 +442,7 @@ class ChatInterface:
     def display_chat(self):
         """Display the chat interface."""
         # Display the Agent Smith image instead of text title
-        st.image("agent_smith.jpg", width=200)
+        st.image("images/agent_smith.jpg", width=200)
         
         # Create two columns
         left_col, right_col = st.columns([2, 1])
@@ -470,7 +470,7 @@ def get_image_as_base64(image_path: str) -> str:
 
 def main():
     # Convert Agent Smith image to base64 for the page icon
-    icon_base64 = get_image_as_base64("agent_smith.jpg")
+    icon_base64 = get_image_as_base64("images/agent_smith.jpg")
     
     st.set_page_config(
         page_title="Agent Smith",
