@@ -1,19 +1,27 @@
-from typing import List, Dict, Any, Optional, TypedDict, Annotated
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langgraph.graph import StateGraph, START, END
-import streamlit as st
 import os
-from datetime import datetime
-import google.generativeai as genai
+import json
 import logging
-from duckduckgo_search import DDGS
-from enum import Enum
 import time
-from functools import wraps
 import pytz
-import base64
+from enum import Enum
+from datetime import datetime
+from functools import wraps
+from typing import List, Dict, Any, Optional, TypedDict, Literal, Annotated
+
+# Streamlit and UI
+import streamlit as st
 from PIL import Image
 import io
+import base64
+
+# AI and Graph Components
+import google.generativeai as genai
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langgraph.graph import StateGraph, START, END
+
+# Tools and External Agents
+from duckduckgo_search import DDGS
+from sed_agent import run_sed_agent
 
 def setup_logging():
     """Configure logging with a single log file per session."""
@@ -51,6 +59,8 @@ logger = logging.getLogger(__name__)
 # Constants
 PAGE_ICON = "🤖"
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "AIzaSyCQJAurEYDJJQrXfYRnYWswteGFauYWI28")
+SED_API_KEY = os.getenv("SED_API_KEY", "PUT API KEY HERE")
+
 
 # Configure Gemini
 genai.configure(api_key=GOOGLE_API_KEY)
