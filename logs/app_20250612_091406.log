@@ -1,0 +1,10 @@
+2025-06-12 06:14:06 - __main__ - INFO - Application logging configured.
+2025-06-12 06:14:06 - orchestrator - ERROR - SED API key is not configured.
+2025-06-12 06:14:28 - orchestrator - ERROR - SED API key is not configured.
+2025-06-12 06:14:29 - orchestrator - INFO - Planner decision: Tool = web_search, Query = 'information about David Stroud'
+2025-06-12 06:14:29 - tools - INFO - Performing web search for: 'information about David Stroud'
+2025-06-12 06:14:30 - primp - INFO - response: https://html.duckduckgo.com/html 202
+2025-06-12 06:14:30 - duckduckgo_search.DDGS - INFO - Error to search using html backend: https://html.duckduckgo.com/html 202 Ratelimit
+2025-06-12 06:14:33 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-12 06:14:33 - orchestrator - INFO - Generating final response...
+2025-06-12 06:14:36 - orchestrator - ERROR - SED API key is not configured.

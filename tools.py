@@ -52,7 +52,7 @@ class SEDSearchTool:
     It now includes methods for both searching and retrieving full documents.
     """
     def __init__(self, api_key: str, base_url: str):
-        if not api_key or api_key == "your_sed_api_key_here":
+        if not api_key:
             raise ValueError("SED API key is not configured.")
         self.api_key = api_key
         self.base_url = base_url
@@ -74,19 +74,5 @@ class SEDSearchTool:
         except requests.exceptions.RequestException as e:
             logger.error(f"SED API search request failed: {e}")
             raise SEDError(f"Failed to connect to SED API for search: {e}")
-
-    @retry_on_error()
-    def get_document_by_id(self, doc_id: str) -> Dict:
-        """Retrieves the full content of a single document by its ID."""
-        document_url = f"{self.base_url}/documents/{doc_id}"
-        logger.info(f"Fetching full document from SED API with ID: {doc_id}")
-        try:
-            response = requests.get(document_url, headers=self.headers, timeout=10)
-            response.raise_for_status()
-            # The API returns the full document object which includes the 'content' field
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            logger.error(f"SED API get_document request failed for docId '{doc_id}': {e}")
-            raise SEDError(f"Failed to retrieve document '{doc_id}': {e}")
 
 

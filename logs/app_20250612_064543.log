@@ -1,0 +1,5 @@
+2025-06-12 06:45:43 - __main__ - INFO - Application logging configured.
+2025-06-12 06:46:05 - orchestrator - INFO - Planner decision: Tool = web_search, Query = 'Who is David Stroud?'
+2025-06-12 06:46:05 - tools - INFO - Performing web search for: 'Who is David Stroud?'
+2025-06-12 06:46:06 - primp - INFO - response: https://html.duckduckgo.com/html 200
+2025-06-12 06:46:06 - orchestrator - INFO - Generating final response...

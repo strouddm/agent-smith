@@ -15,7 +15,7 @@ def setup_logging():
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)
 
-        local_tz = pytz.timezone('America/New_York')
+        local_tz = pytz.timezone('America/Los_Angeles')
         local_time = datetime.now(local_tz)
         timestamp = local_time.strftime("%Y%m%d_%H%M%S")
         log_file = os.path.join(log_dir, f"app_{timestamp}.log")
