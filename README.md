@@ -6,8 +6,8 @@ A conversational AI assistant powered by Google's Gemini model, capable of perfo
 
 - Natural language conversations with context awareness
 - Web search integration using DuckDuckGo
+- **Context-aware query transformation** for better search results (uses full conversation history and latest user question)
 - Powered by Google's Gemini 2.5 Pro model
-- Smart query transformation for better search results
 - Conversation history management
 - Retry mechanism for failed operations
 - Detailed logging for debugging
@@ -107,9 +107,10 @@ deactivate
 agent-smith/
 ├── app.py              # Main application file
 ├── requirements.txt    # Project dependencies
-├── agent_smith.jpg     # Agent Smith avatar
-├── venv/              # Virtual environment directory (created during setup)
-└── logs/              # Application logs directory
+├── venv/               # Virtual environment directory (created during setup)
+├── images/             # Images directory
+├── logs/               # Application logs directory
+└── archive/            # Old code
 ```
 
 ## Key Components
@@ -119,10 +120,11 @@ agent-smith/
 - Manages conversation flow
 - Integrates search functionality
 - Uses LangGraph for workflow management
+- **Evaluates search needs and query formulation using both the full conversation history and the latest user question**
 
 ### SearchTool Class
 - Performs web searches using DuckDuckGo
-- Implements query transformation
+- **Transforms search queries using the entire conversation context and the latest user message**
 - Includes rate limiting and retry mechanisms
 
 ### ChatInterface Class

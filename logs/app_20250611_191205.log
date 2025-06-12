@@ -1,0 +1,12 @@
+2025-06-11 16:12:05 - __main__ - INFO - Application logging configured.
+2025-06-11 16:12:05 - orchestrator - ERROR - SED API key is not configured.
+2025-06-11 16:12:08 - orchestrator - ERROR - SED API key is not configured.
+2025-06-11 16:12:09 - orchestrator - INFO - Planner decision: Tool = none, Query = 'null'
+2025-06-11 16:12:09 - orchestrator - INFO - Generating final response...
+2025-06-11 16:12:09 - orchestrator - ERROR - SED API key is not configured.
+2025-06-11 16:12:17 - orchestrator - ERROR - SED API key is not configured.
+2025-06-11 16:12:18 - orchestrator - INFO - Planner decision: Tool = web_search, Query = 'Who is Taylor Swift?'
+2025-06-11 16:12:18 - tools - INFO - Performing web search for: 'Who is Taylor Swift?'
+2025-06-11 16:12:19 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
+2025-06-11 16:12:19 - orchestrator - INFO - Generating final response...
+2025-06-11 16:12:21 - orchestrator - ERROR - SED API key is not configured.
