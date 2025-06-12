@@ -6,7 +6,7 @@ A conversational AI assistant powered by Google's Gemini model, capable of perfo
 
 - Natural language conversations with context awareness
 - Web search integration using DuckDuckGo
-- **Context-aware query transformation** for better search results (uses full conversation history and latest user question)
+- **Context-aware search decision and query transformation** for better results (evaluates search needs and transforms queries using the full conversation history and the latest user question)
 - Powered by Google's Gemini 2.5 Pro model
 - Conversation history management
 - Retry mechanism for failed operations
@@ -120,11 +120,11 @@ agent-smith/
 - Manages conversation flow
 - Integrates search functionality
 - Uses LangGraph for workflow management
-- **Evaluates search needs and query formulation using both the full conversation history and the latest user question**
+- **Evaluates search needs and query formulation using both the full conversation history and the latest user question, ensuring robust context awareness**
 
 ### SearchTool Class
 - Performs web searches using DuckDuckGo
-- **Transforms search queries using the entire conversation context and the latest user message**
+- **Transforms search queries using the entire conversation context and the latest user message for more accurate and relevant results**
 - Includes rate limiting and retry mechanisms
 
 ### ChatInterface Class
