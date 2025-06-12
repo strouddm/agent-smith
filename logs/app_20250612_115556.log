@@ -1,5 +1,0 @@
-2025-06-12 11:55:56 - __main__ - INFO - Application logging configured.
-2025-06-12 11:55:56 - sed_agent - INFO - SQLite database already exists at /Users/user85520188/code_repo/agent-smith/sed_documents.db
-2025-06-12 11:55:56 - sed_agent - INFO - Database schema verified.
-2025-06-12 11:56:15 - sed_agent - INFO - SQLite database already exists at /Users/user85520188/code_repo/agent-smith/sed_documents.db
-2025-06-12 11:56:15 - sed_agent - INFO - Database schema verified.

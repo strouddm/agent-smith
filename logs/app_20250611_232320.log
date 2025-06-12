@@ -1,8 +1,0 @@
-2025-06-11 20:23:20 - __main__ - INFO - Application logging configured.
-2025-06-11 20:23:20 - orchestrator - ERROR - SED API key is not configured.
-2025-06-11 20:23:34 - orchestrator - ERROR - SED API key is not configured.
-2025-06-11 20:23:36 - orchestrator - INFO - Planner decision: Tool = web_search, Query = 'What actors played in the original movie 'The Matrix'?'
-2025-06-11 20:23:36 - tools - INFO - Performing web search for: 'What actors played in the original movie 'The Matrix'?'
-2025-06-11 20:23:37 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
-2025-06-11 20:23:37 - orchestrator - INFO - Generating final response...
-2025-06-11 20:23:39 - orchestrator - ERROR - SED API key is not configured.

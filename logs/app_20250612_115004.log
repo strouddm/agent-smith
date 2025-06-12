@@ -1,5 +1,0 @@
-2025-06-12 11:50:04 - __main__ - INFO - Application logging configured.
-2025-06-12 11:50:04 - sed_agent - INFO - Initializing SQLite database at /Users/user85520188/code_repo/agent-smith/sed_documents.db
-2025-06-12 11:50:04 - sed_agent - INFO - Database initialization complete
-2025-06-12 11:50:18 - sed_agent - INFO - Initializing SQLite database at /Users/user85520188/code_repo/agent-smith/sed_documents.db
-2025-06-12 11:50:18 - sed_agent - INFO - Database initialization complete

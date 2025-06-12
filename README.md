@@ -1,12 +1,16 @@
 # Agent Smith 🤖
 
-A conversational AI assistant powered by Google's Gemini model, capable of performing web searches and maintaining context-aware conversations.
+A conversational AI assistant powered by Google's Gemini model with advanced intelligence capabilities including web search and Strategic Entity Database (SED) integration.
 
 ## Features
 
 - Natural language conversations with context awareness
 - Web search integration using DuckDuckGo
-- Context-aware search decision and query transformation for better results (evaluates search needs and transforms queries using the full conversation history and the latest user question)
+- Strategic Entity Database (SED) integration for deep intelligence searches
+- Automatic query optimization for more effective intelligence searches
+- Document evaluation and scoring system for relevance and insight value
+- SQLite database for persistent storage of search results and evaluations
+- Context-aware search decision and query transformation for better results
 - Powered by Google's Gemini 2.5 Pro model
 - Conversation history management
 - Retry mechanism for failed operations
@@ -26,6 +30,7 @@ A conversational AI assistant powered by Google's Gemini model, capable of perfo
 
 - Python 3.8 or higher
 - Google API key for Gemini
+- SED API key for intelligence database access
 - Internet connection for web searches
 
 ## Installation
@@ -66,16 +71,19 @@ pip install -r requirements.txt
 For macOS/Linux:
 ```bash
 export GOOGLE_API_KEY="your_google_api_key"
+export SED_API_KEY="your_sed_api_key"
 ```
 
 For Windows (Command Prompt):
 ```bash
 set GOOGLE_API_KEY=your_google_api_key
+set SED_API_KEY=your_sed_api_key
 ```
 
 For Windows (PowerShell):
 ```bash
 $env:GOOGLE_API_KEY="your_google_api_key"
+$env:SED_API_KEY="your_sed_api_key"
 ```
 
 ## Usage
@@ -91,6 +99,7 @@ streamlit run app.py
 
 4. Start chatting with Agent Smith! You can:
    - Ask general questions
+   - Perform intelligence research on entities and topics
    - Have contextual conversations
 
 ## Deactivating the Virtual Environment
@@ -106,7 +115,11 @@ deactivate
 ```
 agent-smith/
 ├── app.py              # Main application file
+├── orchestrator.py     # Main orchestrator agent
+├── sed_agent.py        # Strategic Entity Database agent
+├── tools.py            # Tool implementations for search and SED
 ├── requirements.txt    # Project dependencies
+├── sed_documents.db    # SQLite database for document storage
 ├── venv/               # Virtual environment directory (created during setup)
 ├── images/             # Images directory
 ├── logs/               # Application logs directory
@@ -115,16 +128,24 @@ agent-smith/
 
 ## Key Components
 
-### Agent Class
-- Handles message processing
+### OrchestratorAgent Class
+- Main controller that routes requests
 - Manages conversation flow
-- Integrates search functionality
+- Determines when to use web search vs. SED search
 - Uses LangGraph for workflow management
-- Evaluates search needs and query formulation using both the full conversation history and the latest user question, ensuring robust context awareness
 
-### SearchTool Class
-- Performs web searches using DuckDuckGo
-- Transforms search queries using the entire conversation context and the latest user message for more accurate and relevant results
+### SEDAgent Class
+- Specialized agent for intelligence database queries
+- Implements multi-step workflow:
+  - Query optimization for keyword-based searches
+  - Document retrieval from SED API
+  - Document storage in SQLite database
+  - Document evaluation for relevance and insights
+  - Result synthesis into comprehensive reports
+
+### SearchTool Classes
+- WebSearchTool: Performs web searches using DuckDuckGo
+- SEDSearchTool: Interfaces with intelligence database API
 - Includes rate limiting and retry mechanisms
 
 ### ChatInterface Class
@@ -138,6 +159,7 @@ The application includes comprehensive error handling for:
 - Search failures
 - LLM errors
 - Network issues
+- Database issues
 - Invalid inputs
 
 ## Logging
@@ -145,5 +167,28 @@ The application includes comprehensive error handling for:
 Logs are stored in the `logs` directory with timestamps, including:
 - Application events
 - Search operations
+- Database operations
+- Document evaluations
 - Error messages
 - State transitions
+
+## Database Schema
+
+The application uses a SQLite database with two main tables:
+
+**Documents Table:**
+- doc_id: Unique identifier for each document
+- query: The query that retrieved this document
+- title: Document title
+- content: Full document content in JSON format
+- metadata: Additional document metadata
+- created_at: Timestamp of when the document was stored
+
+**Evaluations Table:**
+- evaluation_id: Unique identifier for each evaluation
+- doc_id: Foreign key to the documents table
+- query: The query used for evaluation
+- relevance_score: Numerical score (0-10) for document relevance
+- insight_score: Numerical score (0-10) for insight value
+- evaluation_text: Text explanation of the evaluation
+- created_at: Timestamp of when the evaluation was performed

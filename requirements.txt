@@ -6,3 +6,4 @@ langgraph>=0.0.19
 duckduckgo-search>=4.4.3
 pytz>=2024.1
 Pillow>=10.2.0  # For image processing 
+python-dotenv==1.0.0 # For environment variable management

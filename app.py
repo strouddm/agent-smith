@@ -5,8 +5,15 @@ from datetime import datetime
 
 import streamlit as st
 import google.generativeai as genai
+from dotenv import load_dotenv
 
 from orchestrator import OrchestratorAgent
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Now you can access them as normal
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 def setup_logging():
     """Configure logging with a single log file per session."""
@@ -94,8 +101,7 @@ def main():
 
     # Configure Gemini API
     try:
-        GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "AIzaSyCQJAurEYDJJQrXfYRnYWswteGFauYWI28")
-        if GOOGLE_API_KEY == "your_google_api_key_here":
+        if not GOOGLE_API_KEY:
             st.warning("Google API Key is not set. The agent may not function correctly.")
         genai.configure(api_key=GOOGLE_API_KEY)
     except Exception as e:

@@ -1,8 +1,0 @@
-2025-06-12 06:15:44 - __main__ - INFO - Application logging configured.
-2025-06-12 06:15:44 - orchestrator - ERROR - SED API key is not configured.
-2025-06-12 06:15:52 - orchestrator - ERROR - SED API key is not configured.
-2025-06-12 06:15:53 - orchestrator - INFO - Planner decision: Tool = web_search, Query = 'Tell me more about David Stroud'
-2025-06-12 06:15:53 - tools - INFO - Performing web search for: 'Tell me more about David Stroud'
-2025-06-12 06:15:54 - primp - INFO - response: https://lite.duckduckgo.com/lite/ 200
-2025-06-12 06:15:54 - orchestrator - INFO - Generating final response...
-2025-06-12 06:15:57 - orchestrator - ERROR - SED API key is not configured.
