@@ -1,4 +1,6 @@
 **/__pycache__/**
 **/venv/**
 **/archive/**
+**/images/**
+**/logs/**
 .env

@@ -1,0 +1,39 @@
+/* style.css */
+
+/* Import a monospace font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+/* Apply font to the entire app */
+html, body, [class*="st-"], .st-emotion-cache-16txtl3 {
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+/* Style for headers with a glow effect */
+h1, h2, h3 {
+    text-shadow:
+        0 0 7px #00FF41,
+        0 0 10px #00FF41,
+        0 0 21px #00FF41;
+}
+
+/* Style for the text input box */
+.st-emotion-cache-16txtl3 {
+    border-color: #00FF41 !important;
+}
+
+/* Style for the form submit button */
+.st-emotion-cache-19rxjzo {
+    border-color: #00FF41 !important;
+    color: #00FF41 !important;
+}
+
+.st-emotion-cache-19rxjzo:hover {
+    border-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+    background-color: rgba(0, 255, 65, 0.2) !important;
+}
+
+/* Style for the divider line */
+.st-emotion-cache-1dh0p93 {
+    background: linear-gradient(to right, #0D0208, #00FF41, #0D0208) !important;
+}
