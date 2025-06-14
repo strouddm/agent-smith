@@ -10,15 +10,16 @@ def local_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # --- Function for "hacker" typing effect ---
-def type_effect(text, speed=0.01):
-    # Create a placeholder for the text
+def type_effect(text, speed=0.005): # Sped up the default typing
     text_placeholder = st.empty()
-    # Display the text character by character
     displayed_text = ""
+    # Add a cursor effect
     for char in text:
         displayed_text += char
-        text_placeholder.markdown(displayed_text)
+        text_placeholder.markdown(displayed_text + "▌")
         time.sleep(speed)
+    # Remove the cursor at the end
+    text_placeholder.markdown(displayed_text)
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -30,9 +31,11 @@ st.set_page_config(
 # Load the custom CSS
 local_css("style.css")
 
-# --- UI Components ---
+# --- Initialize Session State (for storing the final report only) ---
+if 'final_report' not in st.session_state:
+    st.session_state.final_report = ""
 
-# Header with Agent Smith and Neo images
+# --- UI Components ---
 col1, col2, col3 = st.columns([1, 2, 1])
 with col1:
     st.image("images/neo.jpg", caption="The Analyst")
@@ -44,7 +47,6 @@ with col3:
 
 st.divider()
 
-# Use a form to prevent the app from re-running on every keystroke
 with st.form("search_form"):
     query_input = st.text_input(
         "**TARGET IDENTIFIER:**",
@@ -52,22 +54,23 @@ with st.form("search_form"):
     )
     submitted = st.form_submit_button("EXECUTE QUERY")
 
-# --- Workflow Execution ---
+# --- This block handles the entire investigation on a single submission ---
 if submitted and query_input:
-    # Show a spinner with a custom message
-    with st.spinner(">> Connecting to the source... Analyzing rogue data packets..."):
-        try:
-            report = run_investigation(query_input)
-            # Store the report in the session state so it persists
-            st.session_state['report'] = report
-        except Exception as e:
-            st.error(f">>> SYSTEM FAILURE // Anomaly detected: {e}")
-            st.session_state['report'] = None
+    # Use st.spinner for a simple loading animation. It will disappear when done.
+    with st.spinner(">> Agent is investigating... Analyzing data packets... This may take a few moments..."):
+        # The entire investigation runs here, and we wait for the final result.
+        report = run_investigation(query_input)
+        st.session_state.final_report = report
 
-# --- Display Results ---
-if 'report' in st.session_state and st.session_state['report']:
+# --- Display Final Report ---
+# This block will only run after the investigation is complete and a report is available.
+if st.session_state.final_report:
     st.divider()
     st.subheader(">> INCOMING TRANSMISSION // ANALYST REPORT")
     
-    # Use the custom typing effect to display the report
-    type_effect(st.session_state['report'])
+    # Check if the report is an error message
+    if st.session_state.final_report.startswith("ERROR:"):
+        st.error(st.session_state.final_report)
+    else:
+        # Use the typing effect for the final display
+        type_effect(st.session_state.final_report)

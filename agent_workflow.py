@@ -83,11 +83,11 @@ def isolate_relevant_line(chunk_content: str, query: str) -> str:
 # ==============================================================================
 
 def search_node(state: WorkflowState) -> Dict[str, Any]:
-    """Node that calls the Flashpoint API to get raw data chunks."""
+    """Node that calls the SED API to get raw data chunks."""
     # This node remains the same
     profile = state["profile"]
     print(f"--- Node: search_node ---")
-    print(f"[*] Calling Flashpoint API with query: '{profile['query']}'")
+    print(f"[*] Calling SED API with query: '{profile['query']}'")
     api_url = "https://api.flashpoint.io/sources/v2/strategic-entities/chunks/search"
     headers = {"Authorization": f"Bearer {SED_API_KEY}", "Content-Type": "application/json"}
     body = {"query": profile["query"], "size": profile["size"], "include": profile["include"]}
@@ -255,29 +255,42 @@ workflow.add_edge("analyze_records", "generate_report")
 workflow.add_edge("generate_report", END)
 app = workflow.compile()
 
+# In agent_workflow.py, replace the existing run_investigation function with this one.
+
 def run_investigation(user_query: str) -> str:
     """
-    This function takes a user's query, runs the entire LangGraph workflow,
-    and returns the final formatted report.
+    This function takes a user's query, runs the entire LangGraph workflow non-streamed,
+    and returns the final formatted report string.
     """
+    # Check for API keys first
     if not model:
-        return "Workflow halted because the Gemini model could not be initialized. Please check your GOOGLE_API_KEY."
+        return "ERROR: Gemini model could not be initialized. Please check your GOOGLE_API_KEY."
+    if not SED_API_KEY:
+        return "ERROR: SED API key is not set. Please check your SED_API_KEY."
 
-    print(f"--- Running investigation for query: {user_query} ---")
+    print(f"--- Running full investigation for query: {user_query} ---")
     
-    # Dynamically create the TARGET_PROFILE from the user's input
     target_profile = {
         "description": f"Investigate connections related to '{user_query}'",
         "query": user_query,
-        "size": 15,  # Keep size reasonable for web app speed
+        "size": 15,
         "include": {}
     }
     
     initial_input = {"profile": target_profile}
     
-    # We use .invoke() here as we just need the final result for the UI
-    final_state = app.invoke(initial_input)
-    
-    final_report = final_state.get("final_report", "Report generation failed or no results found.")
-    
-    return final_report
+    # Use a try/except block to catch any error during the entire run
+    try:
+        # We use .invoke() here, which waits for the entire graph to finish
+        final_state = app.invoke(initial_input)
+        final_report = final_state.get("final_report", "Report generation failed or no results found.")
+        
+        # Check if the report is empty and provide a better message
+        if not final_report or "No relevant findings" in final_report:
+             return "Investigation Complete: The agent found data but generated no relevant findings for this query."
+
+        return final_report
+
+    except Exception as e:
+        print(f"[!!!] Workflow Error: {e}")
+        return f"ERROR: An error occurred in the workflow: {e}"
