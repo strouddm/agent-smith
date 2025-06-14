@@ -9,6 +9,9 @@ A specialized threat intelligence analysis agent that adaptively processes data 
 - Contextual analysis using Google's Gemini AI model
 - LangGraph for orchestrated workflow management
 - Recursive deep search for relevant information
+- Matrix-themed UI interface for intuitive investigation
+- Text-First principle for handling diverse file formats
+- Adaptive file type detection and parsing
 
 ## Getting Started
 
@@ -22,9 +25,14 @@ A specialized threat intelligence analysis agent that adaptively processes data 
    GOOGLE_API_KEY=your_google_api_key
    SED_API_KEY=your_sed_api_key
    ```
-4. Run the prototype:
+4. Run the prototype in CLI mode:
    ```bash
    python prototype.py
+   ```
+   
+   Or run the web interface:
+   ```bash
+   streamlit run app.py
    ```
 
 ## Architecture
@@ -45,21 +53,39 @@ The workflow follows these steps:
 - Analyze relevant extracts with contextual AI
 - Generate a comprehensive intelligence report
 
+## Matrix UI Interface
+
+The project includes a Matrix-themed web interface built with Streamlit that:
+- Provides an intuitive search interface for investigations
+- Features animated text with typewriter effects
+- Displays investigation results in a visually engaging format
+- Includes themed styling and imagery
+
+## Agent Workflow System
+
+The core intelligence engine uses LangGraph to create a workflow that:
+- Implements a "Text-First" principle for handling diverse file formats
+- Uses contextual prompts that adapt to detected file types
+- Recursively searches JSON objects to find the most relevant data
+- Provides detailed analysis with source attribution
+- Synthesizes findings into comprehensive reports
+
 ## Requirements
 
 - Python 3.8+
 - LangGraph/LangChain
 - Google Gemini API access
 - Flashpoint Strategic Entity Database (SED) API access
+- Streamlit (for web interface)
 
 ## Configuration
 
-Modify the `TARGET_PROFILE` in `prototype.py` to adjust search parameters:
+Modify the `TARGET_PROFILE` in `agent_workflow.py` or use the web interface to adjust search parameters:
 ```python
 TARGET_PROFILE = {
-    "description": "Investigate connections related to 'mark zuckerberg'",
-    "query": "mark zuckerberg",
-    "size": 10,
+    "description": "Investigate connections related to 'elon musk'",
+    "query": "elon musk",
+    "size": 30,
     "include": {}
 }
 ```
