@@ -11,29 +11,29 @@ html, body, [class*="st-"], .st-emotion-cache-16txtl3 {
 /* Style for headers with a glow effect */
 h1, h2, h3 {
     text-shadow:
-        0 0 7px #00FF41,
-        0 0 10px #00FF41,
-        0 0 21px #00FF41;
+        0 0 7px #2C6E49,
+        0 0 10px #2C6E49,
+        0 0 21px #2C6E49;
 }
 
 /* Style for the text input box */
 .st-emotion-cache-16txtl3 {
-    border-color: #00FF41 !important;
+    border-color: #2C6E49 !important;
 }
 
 /* Style for the form submit button */
 .st-emotion-cache-19rxjzo {
-    border-color: #00FF41 !important;
-    color: #00FF41 !important;
+    border-color: #2C6E49 !important;
+    color: #2C6E49 !important;
 }
 
 .st-emotion-cache-19rxjzo:hover {
     border-color: #FFFFFF !important;
     color: #FFFFFF !important;
-    background-color: rgba(0, 255, 65, 0.2) !important;
+    background-color: rgba(3, 160, 98, 0.441) !important;
 }
 
 /* Style for the divider line */
 .st-emotion-cache-1dh0p93 {
-    background: linear-gradient(to right, #0D0208, #00FF41, #0D0208) !important;
+    background: linear-gradient(to right, #0D0208, #2C6E49, #0D0208) !important;
 }
