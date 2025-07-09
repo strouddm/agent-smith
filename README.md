@@ -25,9 +25,9 @@ A specialized threat intelligence analysis agent that adaptively processes data 
    GOOGLE_API_KEY=your_google_api_key
    PROP_API_KEY=your_prop_api_key
    ```
-4. Run the prototype in CLI mode:
+4. Run the prototype in CLI mode (update target info):
    ```bash
-   python prototype.py
+   python agent_workflow.py
    ```
    
    Or run the web interface:
