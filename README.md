@@ -83,7 +83,7 @@ The core intelligence engine uses LangGraph to create a workflow that:
 Modify the `TARGET_PROFILE` in `agent_workflow.py` or use the web interface to adjust search parameters:
 ```python
 TARGET_PROFILE = {
-    "description": "Investigate connections related to 'elon musk'",
+    "description": "Investigate connections related to 'abraham lincoln'",
     "query": "abraham lincoln",
     "size": 30,
     "include": {}
