@@ -5,7 +5,7 @@ A specialized threat intelligence analysis agent that adaptively processes data 
 ## Features
 
 - Intelligent parsing of various file formats (JSON, text)
-- API integration
+- Proprietary API integration
 - Contextual analysis using Google's Gemini AI model
 - LangGraph for orchestrated workflow management
 - Recursive deep search for relevant information
@@ -23,7 +23,7 @@ A specialized threat intelligence analysis agent that adaptively processes data 
 3. Set up your API keys in a `.env` file:
    ```env
    GOOGLE_API_KEY=your_google_api_key
-   SED_API_KEY=your_sed_api_key
+   PROP_API_KEY=your_prop_api_key
    ```
 4. Run the prototype in CLI mode:
    ```bash
