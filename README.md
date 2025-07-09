@@ -5,7 +5,7 @@ A specialized threat intelligence analysis agent that adaptively processes data 
 ## Features
 
 - Intelligent parsing of various file formats (JSON, text)
-- Strategic Entity Database (SED) API integration
+- API integration
 - Contextual analysis using Google's Gemini AI model
 - LangGraph for orchestrated workflow management
 - Recursive deep search for relevant information
@@ -38,7 +38,7 @@ A specialized threat intelligence analysis agent that adaptively processes data 
 ## Architecture
 
 The agent implements a workflow with four main nodes:
-1. **Search**: Retrieves raw data from the Flashpoint API
+1. **Search**: Retrieves raw data from the API
 2. **Intelligent Parser**: Determines file type and extracts relevant content
 3. **Targeted Analysis**: Analyzes extracted data using AI
 4. **Report Generation**: Synthesizes findings into a comprehensive intelligence report
@@ -48,7 +48,7 @@ The agent implements a workflow with four main nodes:
 Agent Smith uses an adaptive parsing strategy based on file mime-type detection. JSON files are processed using recursive object search, while text-based formats use line-by-line analysis. This ensures relevant information is extracted regardless of the data format.
 
 The workflow follows these steps:
-- Query the Strategic Entity Database for raw data chunks
+- Query the Specialize Data for raw data chunks
 - Parse each chunk according to its file type
 - Analyze relevant extracts with contextual AI
 - Generate a comprehensive intelligence report
@@ -75,7 +75,7 @@ The core intelligence engine uses LangGraph to create a workflow that:
 - Python 3.8+
 - LangGraph/LangChain
 - Google Gemini API access
-- Flashpoint Strategic Entity Database (SED) API access
+- Proprietary API access
 - Streamlit (for web interface)
 
 ## Configuration
@@ -84,7 +84,7 @@ Modify the `TARGET_PROFILE` in `agent_workflow.py` or use the web interface to a
 ```python
 TARGET_PROFILE = {
     "description": "Investigate connections related to 'elon musk'",
-    "query": "elon musk",
+    "query": "abraham lincoln",
     "size": 30,
     "include": {}
 }

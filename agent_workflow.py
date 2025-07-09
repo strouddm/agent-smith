@@ -13,7 +13,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-FLASHPOINT_API_KEY = os.getenv("SED_API_KEY") # Using your variable name for consistency
+PROP_API_KEY = os.getenv("PROP_API_KEY") # Proprietary API
 
 try:
     # Using a more advanced model for better reasoning and JSON formatting.
@@ -64,8 +64,8 @@ def isolate_relevant_line(chunk_content: str, query: str, context_lines: int = 0
 def search_node(state: WorkflowState) -> Dict[str, Any]:
     profile = state["profile"]
     print(f"--- Node: search_node ---")
-    api_url = "https://api.flashpoint.io/sources/v2/strategic-entities/chunks/search"
-    headers = {"Authorization": f"Bearer {FLASHPOINT_API_KEY}", "Content-Type": "application/json"}
+    api_url = "[INSERT API URL HERE]" # Proprietary API URL
+    headers = {"Authorization": f"Bearer {PROP_API_KEY}", "Content-Type": "application/json"}
     body = {"query": profile["query"], "size": profile["size"], "include": profile["include"]}
     response = requests.post(api_url, headers=headers, json=body)
     response.raise_for_status()
@@ -218,7 +218,7 @@ app = workflow.compile()
 
 def run_investigation(user_query: str):
     if not model: return {"report": "ERROR: Gemini model not initialized.", "discard_log": []}
-    if not FLASHPOINT_API_KEY: return {"report": "ERROR: Flashpoint API key not set.", "discard_log": []}
+    if not PROP_API_KEY: return {"report": "ERROR: Proprietary API key not set.", "discard_log": []}
     
     target_profile = {"description": f"Investigate '{user_query}'", "query": user_query, "size": 30, "include": {}, "context_lines": 1}
     initial_input = {"profile": target_profile, "discard_log": []}
