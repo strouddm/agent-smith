@@ -2,3 +2,4 @@
 **/venv/**
 **/images/**
 .env
+.DS_Store
